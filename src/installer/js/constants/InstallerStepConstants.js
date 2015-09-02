@@ -1,0 +1,7 @@
+module.exports = {
+    VIRTUALBOX_DOWNLOAD: 0,
+    VIRTUALBOX_INSTALL: 1,
+    VAGRANT_DOWNLOAD: 2,
+    VAGRANT_INSTALL: 3,
+    DONE: -1
+};

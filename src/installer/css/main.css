@@ -1,0 +1,220 @@
+html,
+body {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clear {
+  clear: both;
+}
+body {
+  font-family: sans-serif;
+  color: #101010;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+a {
+  cursor: pointer;
+}
+/* FontAwesome does not center the play button correctly, so we do it for it */
+.fa-play {
+  margin-left: 3px !important;
+}
+main {
+  top: 0;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  position: absolute;
+}
+.text-success {
+  color: #41b222;
+}
+.text-accent {
+  color: #f15843;
+}
+.text-info {
+  color: #227ab2;
+}
+nav {
+  width: 200px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: #233141;
+}
+nav .button {
+  width: 160px;
+  font-size: 13px;
+  margin: 20px auto;
+  display: block;
+}
+nav li {
+  font-size: 14px;
+  list-decoration: none;
+}
+nav li a {
+  padding: 10px 20px;
+  color: #ffffff;
+  display: block;
+  text-decoration: none;
+}
+nav li a:hover {
+  background-color: #1c2632;
+}
+nav li.active a {
+  border-left: 4px solid #f15843;
+  background-color: #3a4856;
+  padding-left: 14px;
+}
+nav li img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+nav li i {
+  margin-right: 5px;
+  width: 16px;
+}
+nav h1 {
+  margin-left: 20px;
+  font-size: 12px;
+  color: #999999;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+nav .dropdown-button {
+  background-color: #1c2632;
+  color: #ffffff;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+}
+nav .dropdown-button:hover {
+  background-color: #3a4856;
+}
+nav .dropdown-button i {
+  float: right;
+}
+.button {
+  background-color: #f15843;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  font-size: 13px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+}
+.button:hover {
+  background-color: #fff;
+  color: #f15843;
+}
+.button i {
+  margin-right: 10px;
+}
+.project {
+  height: 100px;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.project .icon {
+  margin: 0 20px;
+  align-self: center;
+}
+.project .icon img {
+  height: 60px;
+  border-radius: 30px;
+  vertical-align: middle;
+}
+.project .info {
+  text-align: left;
+}
+.project .info h1 {
+  text-align: left;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 22px;
+}
+.project .info p {
+  margin-top: 6px;
+  text-align: left;
+  color: #999999;
+  font-weight: bold;
+  font-size: 14px;
+}
+.project .info p i {
+  margin: 0 3px 0 0;
+}
+.project .info span {
+  margin-left: 10px;
+}
+.project .actions {
+  margin: 0 0px 0 auto;
+  flex-basis: 200px;
+  flex: flex-grow;
+  align-self: center;
+}
+.project .actions .action-button {
+  display: inline-block;
+  margin-right: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: 3px solid #999999;
+  text-align: center;
+  color: #999999;
+  text-decoration: none;
+  line-height: 36px;
+  font-size: 16px;
+}
+.project .actions .action-button.filled {
+  background-color: #999999;
+  color: #fff;
+}
+.project .actions .action-button.accent {
+  border-color: #f15843;
+  color: #f15843;
+}
+.project .actions .action-button.accent.filled {
+  background-color: #f15843;
+  color: #fff;
+}
+.project .actions .action-button.success {
+  border-color: #41b222;
+  color: #41b222;
+}
+.project .actions .action-button.success.filled {
+  background-color: #41b222;
+  color: #fff;
+}
+.project .actions .action-button.info {
+  border-color: #227ab2;
+  color: #227ab2;
+}
+.project .actions .action-button.info.filled {
+  background-color: #227ab2;
+  color: #fff;
+}

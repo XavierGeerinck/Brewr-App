@@ -3,8 +3,8 @@
  * the InstallerStore and passes the new data to its children.
  */
 var React = require('react');
-var InstallerStore = require('../stores/InstallerStore');
-var InstallerActions = require('../actions/InstallerActions');
+var InstallerStore = require('../../../stores/InstallerStore');
+var InstallerActions = require('../../../actions/InstallerActions');
 
 /**
  * Retrieve the current Installer data from the InstallerStore

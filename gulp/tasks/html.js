@@ -10,7 +10,7 @@ var options = {
 
 gulp.task('html', function() {
     // Copy over html
-    gulp.src('./src/*/index.html')
+    gulp.src('./src/index.html')
         .pipe(insertLines({
             'before': /<\/head>$/,
             'lineBefore': '<script src="http://localhost:35729/livereload.js"></script>'

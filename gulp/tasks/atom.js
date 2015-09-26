@@ -23,9 +23,9 @@ gulp.task('atom', ['build'], function () {
 
 // App builder
 gulp.task('atom-run', ['build'], function() {
-    gulp.watch('src/**/css/less/**/*.less', ['less']);
-	gulp.watch('src/**/js/**/*.js', ['js']);
-	gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('src/styles/less/**/*.less', ['less']);
+	gulp.watch('src/js/**/*.js', ['js']);
+	gulp.watch('src/*.html', ['html']);
 
     livereload.listen();
 
@@ -33,7 +33,9 @@ gulp.task('atom-run', ['build'], function() {
     env.NODE_ENV = 'dev';
     gulp.src('').pipe(shell(
         [
-            '`pwd`/node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron `pwd`/build'
+            //'`pwd`/node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron `pwd`/build'
+
+            process.cwd() + "/node_modules/electron-prebuilt/dist/electron.exe build"
         ],
         {
             env: env

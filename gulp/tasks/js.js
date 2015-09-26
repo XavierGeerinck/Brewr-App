@@ -11,12 +11,12 @@ var options = {
 };
 
 gulp.task('js', function() {
-    gulp.src('./src/*/js/**/*.js')
+    gulp.src('./src/js/**/*.js')
         .pipe(gulpif(options.dev, changed('./build')))
         .pipe(sourcemaps.init())
         //.pipe(react())
         .pipe(babel({blacklist: ['regenerator']}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./build/'))
+        .pipe(gulp.dest('./build/js/'))
         .pipe(gulpif(options.dev, livereload()));
 });

@@ -15,22 +15,18 @@ var options = {
 
 // Less builder + watcher
 gulp.task('less', function() {
-    var dirs = getDirectories('./src/');
-
-    for (var key in dirs) {
-        gulp.src('src/' + dirs[key] + '/css/less/main.less')
-            .pipe(gulpif(options.dev, changed('./build/' + dirs[key])))
-            .pipe(gulpif(options.dev, sourcemaps.init()))
-        	.pipe(less())
-            .pipe(gulpif(options.dev, sourcemaps.write()))
-        	.on('error', function(error) {
-        		gulpUtil.log(gulpUtil.colors.red(error.message));
-        		gulpUtil.beep();
-        	})
-            .pipe(concat('main.css'))
-            .pipe(gulpif(options.dev, livereload()))
-        	.pipe(gulp.dest('./build/' + dirs[key] + '/css'));
-    }
+    gulp.src('src/styles/less/main.less')
+        .pipe(gulpif(options.dev, changed('./build/')))
+        .pipe(gulpif(options.dev, sourcemaps.init()))
+        .pipe(less())
+        .pipe(gulpif(options.dev, sourcemaps.write()))
+        .on('error', function(error) {
+            gulpUtil.log(gulpUtil.colors.red(error.message));
+            gulpUtil.beep();
+        })
+        .pipe(concat('main.css'))
+        .pipe(gulpif(options.dev, livereload()))
+        .pipe(gulp.dest('./build/styles'));
 });
 
 function getDirectories(srcpath) {

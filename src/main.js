@@ -21,7 +21,7 @@ app.on('ready', function() {
 	mainWindow = new BrowserWindow({width: 1100, height: 650, frame: true});
 
 	// and load the index.html of the app.
-	mainWindow.loadUrl('file://' + __dirname + '/installer/index.html');
+	mainWindow.loadUrl('file://' + __dirname + '/index.html');
 	mainWindow.openDevTools();
 	mainWindow.show();
 

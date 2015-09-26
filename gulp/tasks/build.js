@@ -17,14 +17,11 @@ function build() {
     gulp.src('./src/package.json')          // The package
         .pipe(gulp.dest('./build/'));
 
-    gulp.src('./src/*/fonts/**')              // The fonts
-        .pipe(gulp.dest('./build/'));
+    gulp.src('./src/assets/**')              // The assets
+        .pipe(gulp.dest('./build/assets/'));
 
-    gulp.src('./src/*/css/**/*.css')          // The CSS files
-        .pipe(gulp.dest('./build/'));
-
-    gulp.src('./src/*/img/**')                // The Images
-        .pipe(gulp.dest('./build/'));
+    gulp.src('./src/styles/font-awesome.css')
+        .pipe(gulp.dest('./build/styles/'));
 
     gulp.src('./resources/**')          // The Resources
         .pipe(gulp.dest('./build/'));

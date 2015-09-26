@@ -22,16 +22,16 @@ module.exports = {
 
         localStorage.setItem('menu_sources', JSON.stringify([
             {
-                avatar: "./img/avatar.png",
+                avatar: "./assets/img/avatar.png",
                 name: "Personal",
                 isActive: true
             },
             {
-                avatar: "./img/avatar.png",
+                avatar: "./assets/img/avatar.png",
                 name: "Company A"
             },
             {
-                avatar: "./img/avatar.png",
+                avatar: "./assets/img/avatar.png",
                 name: "Company B"
             }
         ]));

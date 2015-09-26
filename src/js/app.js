@@ -7,7 +7,7 @@ InstallerAPI.loadSteps();
 InstallerAPI.setStep(0);
 
 React.render(<Installer />, document.body);  */
-
+                  /*
 var React = require('react');
  var App = require('./js/components/App.react');
  var MenuAPI = require('./js/utils/MenuAPI');
@@ -24,4 +24,11 @@ var React = require('react');
  MenuAPI.getMenuData();
  ProjectsAPI.getProjects();
 
- React.render(<App />, document.body);
+ React.render(<App />, document.body);           */
+
+require('../styles/less/main.less');
+
+import React from 'react';
+import routes from './routes';
+
+React.render(routes, document.body);

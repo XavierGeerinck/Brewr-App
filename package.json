@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "babel-node --eval \"require('./tools/electron_build')().catch(err => console.error(err.stack))\"",
-    "watch": "./node_modules/.bin/webpack-dev-server",
+    "watch": "webpack-dev-server --config webpack.config.js --hot --progress --colors --port 8080 --inline",
     "electron-rebuild": "./node_modules/.bin/electron-rebuild"
   }
 }

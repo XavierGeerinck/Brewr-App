@@ -1,18 +1,20 @@
 var webpack = require('webpack');
 
+var projectRoot = __dirname;
+
 module.exports = {
     entry: {
         app: ['webpack/hot/dev-server', './src/js/app.js'], // use dev server and watch app.js as start file
     },
 
     output: {
-        path: './public/build',
+        path: projectRoot + '/build/',
         filename: 'bundle.js',
         publicPath: 'http://localhost:8080/build/'
     },
 
     devServer: {
-        contentBase: './public',
+        contentBase: projectRoot + '/build',
         publicPath: 'http://localhost:8080/build/'
     },
 
@@ -25,7 +27,8 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$")) //.ignore filesystem plugins
     ]
 
 }

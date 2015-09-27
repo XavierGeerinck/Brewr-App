@@ -44,6 +44,10 @@ Great references are:
 * http://www.jayway.com/2015/03/04/using-react-with-ecmascript-6/
 * http://reactjs.net/guides/es6.html
 
+## Run
+`npm run-script watch` to start the development server
+`npm run-script start` to run the app
+
 ## Production Build
 run `gulp atom` which will build the app and put it as a zip file in ./dist
 

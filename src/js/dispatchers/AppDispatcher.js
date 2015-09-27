@@ -1,11 +1,33 @@
-var Dispatcher = require('flux').Dispatcher;
+import { Dispatcher } from 'flux';
 
-// Create instance
-var AppDispatcher = new Dispatcher();
+var objectAssign = require('react/lib/Object.assign');
 
-// Convenience method to handle dispatch requests
-AppDispatcher.handleAction = function(action) {
-    this.dispatch(action);
-}
+var AppDispatcher = objectAssign(new Dispatcher(), {
+    /**
+     * @param {object} action The details of the action, including the action's
+     * type and additional data coming from the server.
+     */
+    handleServerAction: function (action) {
+        var payload = {
+            source: 'SERVER_ACTION',
+            action: action
+        };
 
-module.exports = AppDispatcher;
+        this.dispatch(payload);
+    },
+
+    /**
+     * @param {object} action The details of the action, including the action's
+     * type and additional data coming from the view.
+     */
+    handleViewAction: function (action) {
+        var payload = {
+            source: 'VIEW_ACTION',
+            action: action
+        };
+
+        this.dispatch(payload);
+    }
+});
+
+export default AppDispatcher;

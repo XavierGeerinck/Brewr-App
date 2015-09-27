@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
-import * as AuthAPIUtils from '../utils/AuthAPIUtils';
+import AuthService from '../services/AuthService.js';
 import * as actionTypes from '../constants/ActionTypes';
 
 /**
@@ -9,12 +9,6 @@ import * as actionTypes from '../constants/ActionTypes';
  * a server side event. These are then forwarded to the ServerActionCreators
  */
 module.exports = {
-    changeSelectedCompany: function (selectedCompanyName) {
-        AppDispatcher.handleViewAction({
-            type: actionTypes.CHANGE_SELECTED_COMPANY,
-            name: selectedCompanyName
-        });
-    },
 
     login: function (email, password) {
         // Dispatch the login event on the view
@@ -25,7 +19,7 @@ module.exports = {
         });
 
         // login the user
-        AuthAPIUtils.login(email, password);
+        AuthService.login(email, password);
     },
 
     /**
@@ -37,7 +31,7 @@ module.exports = {
             token: token
         });
 
-        AuthAPIUtils.getUser(token);
+        AuthService.getUser(token);
     },
 
     register: function (email, password, firstName, lastName) {
@@ -49,7 +43,7 @@ module.exports = {
             lastName: lastName
         });
 
-        AuthAPIUtils.register(email, password, firstName, lastName);
+        AuthService.register(email, password, firstName, lastName);
     },
 
     logout: function (token) {
@@ -58,6 +52,6 @@ module.exports = {
             token: token
         });
 
-        AuthAPIUtils.logout(token);
+        AuthService.logout(token);
     }
 };

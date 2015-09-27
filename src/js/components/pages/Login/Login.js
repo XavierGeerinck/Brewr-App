@@ -7,9 +7,11 @@ import AuthStore from '../../../stores/AuthStore';
 import BaseComponent from '../../BaseComponent';
 import './Login.css';
 
-class LoginPage extends React.Component {
+class LoginPage extends BaseComponent {
     constructor(props) {
         super(props);
+
+        this._bind('_onChange');
     }
 
     _getAuthState() {
@@ -19,12 +21,11 @@ class LoginPage extends React.Component {
     }
 
     componentDidMount() {
-        this.changeListener = this._onChange.bind(this);
-        AuthStore.addChangeListener(this.changeListener);
+        AuthStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount() {
-        AuthStore.removeChangeListener(this.changeListener);
+        AuthStore.removeChangeListener(this._onChange);
     }
 
     _onChange() {

@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import LoginPage from './components/pages/Login';
 import LogoutPage from './components/pages/Logout';
+import DashboardPage from './components/pages/Dashboard/Dashboard.react.js';
 //import DashboardPage from './components/pages/Dashboard';
 import AuthStore from './stores/AuthStore';
 
@@ -19,7 +20,7 @@ function requireAuth(nextState, replaceState) {
 var routes = (
     <Router>
         <Route path="/" component={App}>
-            <IndexRoute          component={LoginPage} />
+            <IndexRoute          component={DashboardPage} />
             <Route path="login"  component={LoginPage} />
             <Route path="logout" component={LogoutPage} />
         </Route>

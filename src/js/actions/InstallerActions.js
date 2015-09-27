@@ -1,4 +1,4 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppDispatcher = require('../dispatchers/AppDispatcher');
 var InstallerStoreConstants = require('../constants/InstallerStoreConstants');
 
 var InstallerActions = {

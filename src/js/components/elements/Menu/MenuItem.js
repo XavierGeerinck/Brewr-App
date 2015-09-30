@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import BaseComponent from '../../BaseComponent.js';
+import { Link } from 'react-router';
 
 class MenuItem extends BaseComponent {
 
@@ -13,13 +14,14 @@ class MenuItem extends BaseComponent {
         var cx = React.addons.classSet;
 
         var className = cx({
-            'SideMenuItem-Active':  window.location && window.location.hash.indexOf(link) !== -1
+            'SideMenuItem-Active': window.location && window.location.hash.indexOf(link) !== -1
         });
 
         return (
             <li className={className}>
                 {
-                    link ? <a href={link}>{this.props.children}</a> : this.props.children
+                    link ? <Link to={link}>{this.props.children}</Link> : this.props.children
+                    //link ? <a href={link}>{this.props.children}</a> : this.props.children
                 }
             </li>
         );

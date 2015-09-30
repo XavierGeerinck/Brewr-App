@@ -30,5 +30,13 @@ require('../styles/less/main.less');
 
 import React from 'react';
 import routes from './routes';
+import Router from 'react-router';
+import {useBasename, createHistory } from 'history';
 
-React.render(routes, document.body);
+const history = useBasename(createHistory)({
+ basename: 'auth-flow'
+});
+
+React.render(<Router>{routes}</Router>, document.body);
+
+

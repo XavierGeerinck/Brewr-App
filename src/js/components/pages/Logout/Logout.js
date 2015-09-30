@@ -11,7 +11,7 @@ class LogoutPage extends React.Component {
     }
 
     render() {
-        return (<div></div>);
+        return (<div>t</div>);
     }
 }
 

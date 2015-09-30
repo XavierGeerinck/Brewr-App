@@ -5,7 +5,6 @@ class Menu extends BaseComponent {
 
     constructor(props) {
         super(props);
-        console.log(this.props.children);
     }
 
     render() {

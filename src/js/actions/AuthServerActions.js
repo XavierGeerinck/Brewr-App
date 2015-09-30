@@ -13,13 +13,6 @@ export function receiveLoginResponse(response) {
     AuthService.getUser(response.token);
 }
 
-export function receiveRegisterResponse(response) {
-    AppDispatcher.handleServerAction({
-        type: actionTypes.RESPONSE_REGISTER,
-        response: response
-    });
-}
-
 export function receiveGetUserResponse(response) {
     AppDispatcher.handleServerAction({
         type: actionTypes.RESPONSE_USER,
@@ -38,13 +31,6 @@ export function receiveLogoutResponse(response) {
 export function receiveLoginErrorResponse(err) {
     AppDispatcher.handleServerAction({
         type: actionTypes.RESPONSE_LOGIN_ERROR,
-        error: err
-    });
-}
-
-export function receiveRegisterErrorResponse(err) {
-    AppDispatcher.handleServerAction({
-        type: actionTypes.RESPONSE_REGISTER_ERROR,
         error: err
     });
 }

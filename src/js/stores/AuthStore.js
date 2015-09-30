@@ -20,16 +20,10 @@ class AuthStore extends BaseStore {
         switch(source.action.type) {
             case actionTypes.REQUEST_LOGIN:
                 console.log('doing request');
+                this.emitChange();
                 break;
             case actionTypes.RESPONSE_LOGIN:
                 localStorage.setItem('bearer', source.action.response.token);
-                this._token = source.action.response.token;
-                this._user = source.action.response.user;
-                this.emitChange();
-                break;
-            case actionTypes.RESPONSE_REGISTER:
-                // The response returns the token and user:
-                // { token: "", user: {} } set our store to this
                 this._token = source.action.response.token;
                 this._user = source.action.response.user;
                 this.emitChange();

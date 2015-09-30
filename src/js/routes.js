@@ -3,13 +3,13 @@ import { Router, Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import LoginPage from './components/pages/Login';
 import LogoutPage from './components/pages/Logout';
-import DashboardPage from './components/pages/Dashboard/Dashboard.react.js';
-//import DashboardPage from './components/pages/Dashboard';
+import DashboardPage from './components/pages/Dashboard/Dashboard.react';
 import AuthStore from './stores/AuthStore';
+import { createHistory, useBasename } from 'history';
 
-const createBrowserHistory = require("history/lib/createBrowserHistory");
-
-let history = createBrowserHistory();
+const history = useBasename(createHistory)({
+    basename: 'auth-flow'
+});
 
 function requireAuth(nextState, replaceState) {
     if(!AuthStore.isLoggedIn) {
@@ -20,9 +20,9 @@ function requireAuth(nextState, replaceState) {
 var routes = (
     <Router>
         <Route path="/" component={App}>
-            <IndexRoute          component={DashboardPage} />
-            <Route path="login"  component={LoginPage} />
-            <Route path="logout" component={LogoutPage} />
+            <IndexRoute          component={DashboardPage} onEnter={requireAuth}/>
+            <Route path="login"  component={LoginPage}/>
+            <Route path="logout" component={LogoutPage} onEnter={requireAuth}/>
         </Route>
     </Router>
 );

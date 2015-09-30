@@ -1,8 +1,8 @@
-var React = require('react');
-var ProjectsStore = require('../stores/ProjectsStore');
-var MenuStore = require('../stores/MenuStore');
-var Menu = require('./Menu.react');
-var Projects = require('./Projects.react');
+import ProjectsStore from '../stores/ProjectsStore.js';
+import MenuStore from '../stores/MenuStore.js';
+import Menu from './Menu.react.js';
+import Projects from './Projects.react.js';
+import BaseComponent from './BaseComponent.js';
 
 function getAppState() {
     return {
@@ -12,33 +12,33 @@ function getAppState() {
     };
 }
 
-var App = React.createClass({
-    getInitialState: function() {
+class App extends BaseComponent {
+    getInitialState() {
         return getAppState();
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         MenuStore.addChangeListener(this._onChange);
         ProjectsStore.addChangeListener(this._onChange);
-    },
+    }
 
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         MenuStore.removeChangeListener(this._onChange);
         ProjectsStore.removeChangeListener(this._onChange);
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <body>
                 <Menu allSources={this.state.sources} allMenuItems={this.state.menuItems} />
                 <Projects allProjects={this.state.projects} />
             </body>
         );
-    },
+    }
 
-    _onChange: function() {
+    _onChange() {
         this.setState(getAppState());
     }
-});
+}
 
-module.exports = App;
+export default App;

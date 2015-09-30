@@ -1,44 +1,45 @@
-var React = require('react');
-var ProjectsStore = require('../../../stores/ProjectsStore');
-var MenuStore = require('../../../stores/MenuStore');
-var Menu = require('../../Menu.react');
-var Projects = require('../../Projects.react');
+import React from 'react';
+import ProjectsStore from '../../../stores/ProjectsStore.js';
+import SideMenu from '../../elements/Menu/SideMenu.js';
+import Projects from '../../Projects.react';
+import BaseComponent from '../../BaseComponent.js';
 
-function getAppState() {
-    return {
-        menuItems: MenuStore.getAllMenuItems(),
-        sources: MenuStore.getAllSources(),
-        projects: ProjectsStore.getAll()
-    };
+class Dashboard extends BaseComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            projects: ProjectsStore.getAll()
+        };
+
+        // Don't forget to BIND!
+        this._bind('loadProjects');
+    }
+
+    componentDidMount() {
+        ProjectsStore.addChangeListener(this.loadProjects);
+    }
+
+    componentWillUnmount() {
+        ProjectsStore.removeChangeListener(this.loadProjects);
+    }
+
+    loadProjects() {
+        this.setState({projects: ProjectsStore.getAll()});
+    }
+
+    render() {
+        return(
+
+            //DASHBOARD
+            <div>
+                <SideMenu/>
+                <Projects allProjects={this.state.projects} />
+            </div>
+            //<Projects allProjects={this.state.projects} />
+
+        );
+    }
 }
 
-var App = React.createClass({
-    getInitialState: function() {
-        return getAppState();
-    },
-
-    componentDidMount: function() {
-        MenuStore.addChangeListener(this._onChange);
-        ProjectsStore.addChangeListener(this._onChange);
-    },
-
-    componentWillUnmount: function() {
-        MenuStore.removeChangeListener(this._onChange);
-        ProjectsStore.removeChangeListener(this._onChange);
-    },
-
-    render: function() {
-        return (
-            <body>
-            <Menu allSources={this.state.sources} allMenuItems={this.state.menuItems} />
-            <Projects allProjects={this.state.projects} />
-            </body>
-        );
-    },
-
-    _onChange: function() {
-        this.setState(getAppState());
-    }
-});
-
-module.exports = App;
+export default Dashboard;

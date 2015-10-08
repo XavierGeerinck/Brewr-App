@@ -1,31 +1,35 @@
 import React from 'react';
-import ProjectsStore from '../../../stores/ProjectsStore.js';
+import ProjectStore from '../../../stores/ProjectStore.js';
 import SideMenu from '../../elements/Menu/SideMenu.js';
 import Projects from '../../Projects.react';
 import BaseComponent from '../../BaseComponent.js';
+import ProjectActions from '../../../actions/ProjectActions';
 
 class Dashboard extends BaseComponent {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            projects: ProjectsStore.getAll()
+            projects: ProjectStore.getAll()
         };
+
+        ProjectActions.all();
 
         // Don't forget to BIND!
         this._bind('loadProjects');
     }
 
     componentDidMount() {
-        ProjectsStore.addChangeListener(this.loadProjects);
+        ProjectStore.addChangeListener(this.loadProjects);
     }
 
     componentWillUnmount() {
-        ProjectsStore.removeChangeListener(this.loadProjects);
+        ProjectStore.removeChangeListener(this.loadProjects);
     }
 
     loadProjects() {
-        this.setState({projects: ProjectsStore.getAll()});
+        this.setState({projects: ProjectStore.getAll()});
     }
 
     render() {

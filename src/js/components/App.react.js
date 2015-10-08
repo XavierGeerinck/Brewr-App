@@ -1,4 +1,4 @@
-import ProjectsStore from '../stores/ProjectsStore.js';
+import ProjectStore from '../stores/ProjectStore.js';
 import MenuStore from '../stores/MenuStore.js';
 import Menu from './Menu.react.js';
 import Projects from './Projects.react.js';
@@ -8,7 +8,7 @@ function getAppState() {
     return {
         menuItems: MenuStore.getAllMenuItems(),
         sources: MenuStore.getAllSources(),
-        projects: ProjectsStore.getAll()
+        projects: ProjectStore.getAll()
     };
 }
 
@@ -19,15 +19,16 @@ class App extends BaseComponent {
 
     componentDidMount() {
         MenuStore.addChangeListener(this._onChange);
-        ProjectsStore.addChangeListener(this._onChange);
+        ProjectStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount() {
         MenuStore.removeChangeListener(this._onChange);
-        ProjectsStore.removeChangeListener(this._onChange);
+        ProjectStore.removeChangeListener(this._onChange);
     }
 
     render() {
+        console.log(this.state.projects);
         return (
             <body>
                 <Menu allSources={this.state.sources} allMenuItems={this.state.menuItems} />

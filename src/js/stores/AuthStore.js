@@ -19,7 +19,6 @@ class AuthStore extends BaseStore {
 
         switch(source.action.type) {
             case actionTypes.REQUEST_LOGIN:
-                console.log('doing request');
                 this.emitChange();
                 break;
             case actionTypes.RESPONSE_LOGIN:

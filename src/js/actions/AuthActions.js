@@ -8,9 +8,9 @@ import * as actionTypes from '../constants/ActionTypes';
  * upon receiving a response from the server (in the api util), we will trigger
  * a server side event. These are then forwarded to the ServerActionCreators
  */
-module.exports = {
+class AuthActions {
 
-    login: function (email, password) {
+    login(email, password) {
         // Dispatch the login event on the view
         AppDispatcher.handleViewAction({
             type: actionTypes.REQUEST_LOGIN,
@@ -20,21 +20,21 @@ module.exports = {
 
         // login the user
         AuthService.login(email, password);
-    },
+    }
 
     /**
      * Validate the token and get the user object (aka log user in with token)
      */
-    getUser: function (token) {
+    getUser(token) {
         AppDispatcher.handleViewAction({
             type: actionTypes.REQUEST_USER,
             token: token
         });
 
         AuthService.getUser(token);
-    },
+    }
 
-    register: function (email, password, firstName, lastName) {
+    register(email, password, firstName, lastName) {
         AppDispatcher.handleViewAction({
             type: actionTypes.REQUEST_REGISTER,
             email: email,
@@ -44,9 +44,9 @@ module.exports = {
         });
 
         AuthService.register(email, password, firstName, lastName);
-    },
+    }
 
-    logout: function (token) {
+    logout(token) {
         AppDispatcher.handleViewAction({
             type: actionTypes.REQUEST_LOGOUT,
             token: token
@@ -54,4 +54,6 @@ module.exports = {
 
         AuthService.logout(token);
     }
-};
+}
+
+export default new AuthActions();

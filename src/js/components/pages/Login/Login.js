@@ -36,7 +36,7 @@ class LoginPage extends BaseComponent {
         // If logged in, redirect
         if (newState.isLoggedIn) {
             // If we got old state, go to that path
-            if (this.props.location.state) {
+            if (this.props.location.state && this.props.location.pathname != '/login') {
                 this.props.history.pushState(null, this.props.location.state.nextPathname);
             } else {
                 this.props.history.pushState(null, '/');

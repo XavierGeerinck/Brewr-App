@@ -1,14 +1,10 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+import React from 'react';
+import BaseComponent from './BaseComponent';
 
-var ProjectItem = React.createClass({
-    propTypes: {
-        project: ReactPropTypes.object.isRequired
-    },
+export default class ProjecItem extends BaseComponent {
 
-    render: function() {
+    render() {
         var project = this.props.project;
-
         return (
             <div className="project">
                 <div className="icon">
@@ -17,7 +13,7 @@ var ProjectItem = React.createClass({
 
                 <div className="info">
                     <h1>{project.name}</h1>
-                    <p>By {project.creator} <span className="text-success"><i className="fa fa-play-circle"></i> {project.state}</span></p>
+                    <p>By {project.owner} <span className="text-success"><i className="fa fa-play-circle"></i> {project.state}</span></p>
                 </div>
 
                 <div className="actions">
@@ -36,6 +32,4 @@ var ProjectItem = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = ProjectItem;
+}

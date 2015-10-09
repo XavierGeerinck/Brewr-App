@@ -5,14 +5,14 @@ import ProjectService from '../services/ProjectService';
 class ProjectActions {
 
     all() {
-        ProjectService.all(function(data){
+        ProjectService.all(function(projects){
 
-            if(data.error) {
-                console.log(data.error);
+            if(projects.error) {
+                console.log(projects.error);
             } else {
                 AppDispatcher.handleServerAction({
-                    type: ProjectConstants.RECEIVE_PROJECTS_DATA,
-                    data: data
+                    type: ProjectConstants.RESPONSE_PROJECTS_ALL,
+                    projects: projects.data
                 });
             }
         });
@@ -22,13 +22,6 @@ class ProjectActions {
         console.log(err);
     }
 
-    /*allResponse(projects) {
-        console.log(projects);
-        AppDispatcher.handleServerAction({
-            type: ProjectConstants.RESPONSE_PROJECTS_ALL,
-            data: projects
-        })
-    }*/
 
 }
 

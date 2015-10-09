@@ -3,16 +3,20 @@ import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
 export default class BaseStore extends EventEmitter {
+
     constructor() {
         super();
+
+        this._listeners = {};
     }
 
-    addChangeListener(callback) {
-        this.on(Constants.CHANGE_EVENT, callback);
+    addChangeListener(name, callback) {
+        this._listeners[name] = callback;
+        this.on(Constants.CHANGE_EVENT, this._listeners[name]);
     }
 
-    removeChangeListener(callback) {
-        this.removeListener(Constants.CHANGE_EVENT, callback);
+    removeChangeListener(name) {
+        this.removeListener(Constants.CHANGE_EVENT, this._listeners[name]);
     }
 
     // triggers change listener above, firing controller-view callback

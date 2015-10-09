@@ -13,22 +13,19 @@ class Dashboard extends BaseComponent {
         this.state = {
             projects: ProjectStore.getAll()
         };
-
-        ProjectActions.all();
-
-        // Don't forget to BIND!
-        this._bind('loadProjects');
     }
 
     componentDidMount() {
-        ProjectStore.addChangeListener(this.loadProjects);
+        ProjectStore.addChangeListener("projects", this.loadData);
+        // load projects
+        ProjectActions.all();
     }
 
     componentWillUnmount() {
-        ProjectStore.removeChangeListener(this.loadProjects);
+        ProjectStore.removeChangeListener("projects");
     }
 
-    loadProjects() {
+    loadData() {
         this.setState({projects: ProjectStore.getAll()});
     }
 
@@ -40,7 +37,6 @@ class Dashboard extends BaseComponent {
                 <SideMenu/>
                 <Projects allProjects={this.state.projects} />
             </div>
-            //<Projects allProjects={this.state.projects} />
 
         );
     }

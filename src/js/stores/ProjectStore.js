@@ -12,19 +12,15 @@ class ProjectStore extends BaseStore {
     constructor() {
         super();
 
-        this.subscribe(() => this._registerToActions.bind(this));
+        this.subscribe(() => this.registerToActions.bind(this));
 
         this._projects = [];
     }
 
-    _registerToActions(data) {
+    registerToActions(data) {
         switch(data.action.type) {
-            case ProjectConstants.RECEIVE_PROJECTS_DATA:
-                this._projects = action.data;
-                this.emitChange();
-                break;
             case ProjectConstants.RESPONSE_PROJECTS_ALL:
-                this._projects = action.data;
+                this._projects = data.action.projects;
                 this.emitChange();
                 break;
         }

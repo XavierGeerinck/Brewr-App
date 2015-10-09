@@ -9,7 +9,7 @@ var Projects = React.createClass({
 
     render: function() {
         // If no projects, don't show anything
-        if (Object.keys(this.props.allProjects).length < 1) {
+        if (typeof(this.props.allProjects) != "undefined" && Object.keys(this.props.allProjects).length < 1) {
             return null;
         }
 

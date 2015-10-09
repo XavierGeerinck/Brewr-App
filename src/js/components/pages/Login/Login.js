@@ -21,11 +21,11 @@ class LoginPage extends BaseComponent {
     }
 
     componentDidMount() {
-        AuthStore.addChangeListener(this._onChange);
+        AuthStore.addChangeListener("login", this._onChange);
     }
 
     componentWillUnmount() {
-        AuthStore.removeChangeListener(this._onChange);
+        AuthStore.removeChangeListener("login");
     }
 
     _onChange() {
